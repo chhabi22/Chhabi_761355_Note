@@ -13,6 +13,8 @@
 		9BE542292379E23F00DA94A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE542272379E23F00DA94A4 /* Main.storyboard */; };
 		9BE5422B2379E24700DA94A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BE5422A2379E24700DA94A4 /* Assets.xcassets */; };
 		9BE5422E2379E24700DA94A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE5422C2379E24700DA94A4 /* LaunchScreen.storyboard */; };
+		9BE542362379E4CC00DA94A4 /* FolderCollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE542352379E4CC00DA94A4 /* FolderCollectionTableViewController.swift */; };
+		9BE542382379F19C00DA94A4 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE542372379F19C00DA94A4 /* NotesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		9BE5422A2379E24700DA94A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BE5422D2379E24700DA94A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9BE5422F2379E24700DA94A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BE542352379E4CC00DA94A4 /* FolderCollectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCollectionTableViewController.swift; sourceTree = "<group>"; };
+		9BE542372379F19C00DA94A4 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				9BE5422A2379E24700DA94A4 /* Assets.xcassets */,
 				9BE5422C2379E24700DA94A4 /* LaunchScreen.storyboard */,
 				9BE5422F2379E24700DA94A4 /* Info.plist */,
+				9BE542352379E4CC00DA94A4 /* FolderCollectionTableViewController.swift */,
+				9BE542372379F19C00DA94A4 /* NotesTableViewController.swift */,
 			);
 			path = Chhabi_761355_Note;
 			sourceTree = "<group>";
@@ -141,6 +147,8 @@
 				9BE542262379E23F00DA94A4 /* ViewController.swift in Sources */,
 				9BE542222379E23F00DA94A4 /* AppDelegate.swift in Sources */,
 				9BE542242379E23F00DA94A4 /* SceneDelegate.swift in Sources */,
+				9BE542362379E4CC00DA94A4 /* FolderCollectionTableViewController.swift in Sources */,
+				9BE542382379F19C00DA94A4 /* NotesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
