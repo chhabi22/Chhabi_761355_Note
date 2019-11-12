@@ -10,8 +10,7 @@ import UIKit
 
 class NotesTableViewController: UITableViewController {
     
-   
-     var curIndx = -1
+        var curIndx = -1
     var folderIndex: Int?
     @IBOutlet var notesTableView: UITableView!
     
@@ -33,22 +32,24 @@ class NotesTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return folderData.foldersData.count    }
     
+    // CELL FOR ROW AT
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "notesCell", for: indexPath)
-             
+        
+        
+        cell.accessoryType = .detailButton
 
-//        let numofNotes = notesArray![indexPath.row]
         cell.textLabel?.text = "\(folderData.foldersData[indexPath.row].notesName)"
         return cell
     }
     
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        tableView.reloadData()
-    }
-    
-    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        tableView.reloadData()
+//    }
+//
+//
 
 //    @IBAction func trash(_ sender: UIBarButtonItem) {
 //         // SWIPE DELETE
@@ -112,22 +113,56 @@ class NotesTableViewController: UITableViewController {
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        
-         if let detailView = segue.destination as? AddNoteViewController {
-                   detailView.notesTable = self
-                   if let tableViewCell = sender as? UITableViewCell {
-                       if let index = tableView.indexPath(for: tableViewCell)?.row {
-                        detailView.newNotes = folderData.foldersData[folderIndex!].notesName[index]
-                           curIndx = index
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//
+//         if let detailView = segue.destination as? AddNoteViewController {
+//                  detailView.notesTable = self
+//
+//            }
+//        }
+    
+        override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        if let cell = notesTableView.cellForRow(at: indexPath){
+        if cell.accessoryType == .detailButton{
+             
+                           func updateText(text: String) {
+                                   //var newValue = text
+                                   
+                            guard folderData.foldersData[indexPath.row].notesName != nil else {
+                                       return
+                                   }
+//                            folderData.foldersData[indexPath.row].notesName.append(text)
+//                                   tableView.reloadData()
             }
-        }
-        
+            
+            }
+            }
+    }
+            
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      
+          if let cell = tableView.cellForRow(at: indexPath){
+          if cell.accessoryType == .detailButton{
+             cell.accessoryType = .checkmark
+              
+          }
+          else{
+              cell.accessoryType = .detailButton
+              }
+         }
+          
+      }
+    
+     func updateText(text: String) {
+        //folderData.foldersData[indexPath.row].notesName.append(text)
+       // tableView.reloadData()
+               
+//    folderData.foldersData.[indexPath.row]notesName.append(text)
+//               tableView.reloadData()
+//
+    
+    
 //        func updateText(text: String) {
 //            guard folderData.foldersData != nil && curIndx != -1 else {
 //                    return
@@ -141,9 +176,11 @@ class NotesTableViewController: UITableViewController {
         
     }
     
-}
+
 
       
 
 
 
+
+}

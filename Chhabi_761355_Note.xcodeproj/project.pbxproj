@@ -67,6 +67,7 @@
 				9BE542352379E4CC00DA94A4 /* FolderCollectionTableViewController.swift */,
 				9BE542372379F19C00DA94A4 /* NotesTableViewController.swift */,
 				9BE542392379FB5600DA94A4 /* AddNoteViewController.swift */,
+				9BE542252379E23F00DA94A4 /* ViewController.swift */,
 			);
 			path = collection;
 			sourceTree = "<group>";
@@ -95,7 +96,6 @@
 				9BD169B3237B5043005AF0D5 /* model */,
 				9BE542212379E23F00DA94A4 /* AppDelegate.swift */,
 				9BE542232379E23F00DA94A4 /* SceneDelegate.swift */,
-				9BE542252379E23F00DA94A4 /* ViewController.swift */,
 				9BE5422A2379E24700DA94A4 /* Assets.xcassets */,
 				9BE5422C2379E24700DA94A4 /* LaunchScreen.storyboard */,
 				9BE5422F2379E24700DA94A4 /* Info.plist */,

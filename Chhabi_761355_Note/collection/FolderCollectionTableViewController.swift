@@ -13,7 +13,8 @@ class FolderCollectionTableViewController: UITableViewController {
     // connected name to table view controller
     @IBOutlet var foldersCollections: UITableView!
     // array of folders
-  
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,8 @@ class FolderCollectionTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return folderData.foldersData.count
+       return folderData.foldersData.count
+        
     }
 
     
@@ -48,9 +50,6 @@ class FolderCollectionTableViewController: UITableViewController {
     
     
     
-    
-    
-
 // ------> add new folder action
     @IBAction func addNewFolder(_ sender: UIBarButtonItem) {
         
@@ -148,14 +147,18 @@ class FolderCollectionTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//         if let folderIndex = segue.destination as?  {
+//                   folderIndex. = self
+//                 
+//                       }
+//                   }
+//                   
+//               }    }
+//    
 
 }

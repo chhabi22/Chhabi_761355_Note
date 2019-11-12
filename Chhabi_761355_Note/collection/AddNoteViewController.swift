@@ -26,6 +26,9 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
         }
     
 //    override func viewWillDisappear(_ animated: Bool) {
+//       taskTable?.updateText(text: textView.text)
+//    }
+//    override func viewWillDisappear(_ animated: Bool) {
 //        notesTable?.notesArray?.append(textView.text)
 //    }
 //
