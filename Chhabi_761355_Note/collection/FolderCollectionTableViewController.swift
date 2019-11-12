@@ -13,12 +13,11 @@ class FolderCollectionTableViewController: UITableViewController {
     // connected name to table view controller
     @IBOutlet var foldersCollections: UITableView!
     // array of folders
-    var foldersArray: [String]?
+  
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        foldersArray = []
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
@@ -31,31 +30,39 @@ class FolderCollectionTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return foldersArray?.count ?? 0
+        return folderData.foldersData.count
     }
 
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "folderCell", for: indexPath)
 
-        let numOfFolder = foldersArray![indexPath.row]
-        cell.textLabel?.text = numOfFolder
-        cell.imageView?.image = UIImage(named: "folder-icon")
         
+        cell.textLabel?.text = folderData.foldersData[indexPath.row].Foldername
+        cell.imageView?.image = UIImage(named: "folder-icon")
+        cell.detailTextLabel?.text = "\(folderData.foldersData[indexPath.row].notesName.count)"
 
         return cell
     }
+    
+    
+    
+    
+    
 
 // ------> add new folder action
     @IBAction func addNewFolder(_ sender: UIBarButtonItem) {
         
         let newFolderAlert = UIAlertController(title: "New Folder", message: "Enter a name for this folder", preferredStyle: .alert)
         newFolderAlert.addTextField()
+        
         // add a new note
         let addFolderAction = UIAlertAction(title: "Add Item", style: .default, handler:{[weak newFolderAlert]
            (_) in
             let newNote = newFolderAlert?.textFields![0]
-            self.foldersArray?.append(newNote!.text!)
+            let o = folderData(Foldername: newNote!.text!, notesName: [])
+            folderData.foldersData.append(o)
             self.foldersCollections.reloadData()
         } )
         // cancel note
@@ -69,9 +76,9 @@ class FolderCollectionTableViewController: UITableViewController {
     
   // ------> move the rows in edit
        override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-           let moveFolder = foldersArray?[sourceIndexPath.item]
-           foldersArray?.remove(at: sourceIndexPath.item)
-          foldersArray?.insert(moveFolder!, at: destinationIndexPath.item)
+           let moveFolder = folderData.foldersData[sourceIndexPath.item]
+           folderData.foldersData.remove(at: sourceIndexPath.item)
+          folderData.foldersData.insert(moveFolder, at: destinationIndexPath.item)
        }
     
     // REMOVE DELETE IN EDIT
@@ -87,11 +94,12 @@ class FolderCollectionTableViewController: UITableViewController {
 
         }
     
+    
   // -------------------------------------
      // SWIPE DELETE
        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
            if editingStyle == .delete {
-               foldersArray?.remove(at: indexPath.row)
+               folderData.foldersData.remove(at: indexPath.row)
                foldersCollections.deleteRows(at: [indexPath], with: .fade)
            }
        }

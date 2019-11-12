@@ -9,29 +9,61 @@
 import UIKit
 
 class NotesTableViewController: UITableViewController {
+    
+   
+     var curIndx = -1
+    var folderIndex: Int?
+    @IBOutlet var notesTableView: UITableView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        navigationController?.navigationBar.prefersLargeTitles = true
+       
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
+        return folderData.foldersData.count    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "notesCell", for: indexPath)
+             
 
+//        let numofNotes = notesArray![indexPath.row]
+        cell.textLabel?.text = "\(folderData.foldersData[indexPath.row].notesName)"
+        return cell
+    }
+    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableView.reloadData()
+    }
+    
+    
+
+//    @IBAction func trash(_ sender: UIBarButtonItem) {
+//         // SWIPE DELETE
+//        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//                  if editingStyle == .delete {
+//                      notesArray?.remove(at: indexPath.row)
+//                      notesTableView.deleteRows(at: [indexPath], with: .fade)
+//                  }
+//              }    }
+    
+    
+    
+    
+    
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -77,14 +109,41 @@ class NotesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+         if let detailView = segue.destination as? AddNoteViewController {
+                   detailView.notesTable = self
+                   if let tableViewCell = sender as? UITableViewCell {
+                       if let index = tableView.indexPath(for: tableViewCell)?.row {
+                        detailView.newNotes = folderData.foldersData[folderIndex!].notesName[index]
+                           curIndx = index
     }
-    */
-
+            }
+        }
+        
+//        func updateText(text: String) {
+//            guard folderData.foldersData != nil && curIndx != -1 else {
+//                    return
+//                }
+//
+//                notesArray![curIndx] = text
+//        //        tableView.reloadData()
+//                let indexPath = IndexPath(item: curIndx, section: 0)
+//                tableView.reloadRows(at: [indexPath], with: .fade)
+//            }
+        
+    }
+    
 }
+
+      
+
+
+

@@ -15,6 +15,8 @@
 		9BE5422E2379E24700DA94A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE5422C2379E24700DA94A4 /* LaunchScreen.storyboard */; };
 		9BE542362379E4CC00DA94A4 /* FolderCollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE542352379E4CC00DA94A4 /* FolderCollectionTableViewController.swift */; };
 		9BE542382379F19C00DA94A4 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE542372379F19C00DA94A4 /* NotesTableViewController.swift */; };
+		9BE5423A2379FB5600DA94A4 /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE542392379FB5600DA94A4 /* AddNoteViewController.swift */; };
+		9BF20524237B1C8A002BFE0B /* myData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF20523237B1C8A002BFE0B /* myData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		9BE5422F2379E24700DA94A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BE542352379E4CC00DA94A4 /* FolderCollectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCollectionTableViewController.swift; sourceTree = "<group>"; };
 		9BE542372379F19C00DA94A4 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
+		9BE542392379FB5600DA94A4 /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
+		9BF20523237B1C8A002BFE0B /* myData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9BD169B3237B5043005AF0D5 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				9BF20523237B1C8A002BFE0B /* myData.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		9BD169B4237B504B005AF0D5 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				9BE542272379E23F00DA94A4 /* Main.storyboard */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		9BD169B6237B5067005AF0D5 /* collection */ = {
+			isa = PBXGroup;
+			children = (
+				9BE542352379E4CC00DA94A4 /* FolderCollectionTableViewController.swift */,
+				9BE542372379F19C00DA94A4 /* NotesTableViewController.swift */,
+				9BE542392379FB5600DA94A4 /* AddNoteViewController.swift */,
+			);
+			path = collection;
+			sourceTree = "<group>";
+		};
 		9BE542152379E23F00DA94A4 = {
 			isa = PBXGroup;
 			children = (
@@ -60,15 +90,15 @@
 		9BE542202379E23F00DA94A4 /* Chhabi_761355_Note */ = {
 			isa = PBXGroup;
 			children = (
+				9BD169B6237B5067005AF0D5 /* collection */,
+				9BD169B4237B504B005AF0D5 /* view */,
+				9BD169B3237B5043005AF0D5 /* model */,
 				9BE542212379E23F00DA94A4 /* AppDelegate.swift */,
 				9BE542232379E23F00DA94A4 /* SceneDelegate.swift */,
 				9BE542252379E23F00DA94A4 /* ViewController.swift */,
-				9BE542272379E23F00DA94A4 /* Main.storyboard */,
 				9BE5422A2379E24700DA94A4 /* Assets.xcassets */,
 				9BE5422C2379E24700DA94A4 /* LaunchScreen.storyboard */,
 				9BE5422F2379E24700DA94A4 /* Info.plist */,
-				9BE542352379E4CC00DA94A4 /* FolderCollectionTableViewController.swift */,
-				9BE542372379F19C00DA94A4 /* NotesTableViewController.swift */,
 			);
 			path = Chhabi_761355_Note;
 			sourceTree = "<group>";
@@ -146,9 +176,11 @@
 			files = (
 				9BE542262379E23F00DA94A4 /* ViewController.swift in Sources */,
 				9BE542222379E23F00DA94A4 /* AppDelegate.swift in Sources */,
+				9BE5423A2379FB5600DA94A4 /* AddNoteViewController.swift in Sources */,
 				9BE542242379E23F00DA94A4 /* SceneDelegate.swift in Sources */,
 				9BE542362379E4CC00DA94A4 /* FolderCollectionTableViewController.swift in Sources */,
 				9BE542382379F19C00DA94A4 /* NotesTableViewController.swift in Sources */,
+				9BF20524237B1C8A002BFE0B /* myData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
