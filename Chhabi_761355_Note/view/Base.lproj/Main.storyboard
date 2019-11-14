@@ -95,11 +95,12 @@
                     <toolbarItems>
                         <barButtonItem systemItem="trash" id="BLp-qF-eNe">
                             <connections>
-                                <action selector="trash:" destination="Sif-gK-Jh5" id="wSP-CD-CRR"/>
+                                <action selector="trashDelete:" destination="Sif-gK-Jh5" id="lga-XC-SxH"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem image="tray.and.arrow.down" catalog="system" id="zxK-Lw-h3H">
                             <connections>
+                                <action selector="elipseAction:" destination="Sif-gK-Jh5" id="0wr-76-Be9"/>
                                 <segue destination="473-5P-xtl" kind="popoverPresentation" popoverAnchorBarButtonItem="zxK-Lw-h3H" id="fgK-Hw-9o1">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
@@ -113,11 +114,17 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Notes" largeTitleDisplayMode="always" id="iAs-Cx-lzQ">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="MML-2V-255"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="MML-2V-255">
+                            <connections>
+                                <action selector="elipseAction:" destination="Sif-gK-Jh5" id="QSf-kq-eq5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="notesTableView" destination="PQk-Fl-4ee" id="W5W-7J-VWd"/>
+                        <outlet property="screen" destination="zxK-Lw-h3H" id="lb7-yt-qF0"/>
+                        <outlet property="trash" destination="BLp-qF-eNe" id="Cil-8V-GPm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZxC-jm-yUT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -62,8 +62,9 @@ class FolderCollectionTableViewController: UITableViewController {
             let newNote = newFolderAlert?.textFields![0]
             let o = folderData(Foldername: newNote!.text!, notesName: [])
             folderData.foldersData.append(o)
-            self.foldersCollections.reloadData()
+            self.tableView.reloadData()
         } )
+        addFolderAction.setValue(UIColor.brown, forKey: "titleTextColor")
         // cancel note
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
         newFolderAlert.addAction(addFolderAction)
@@ -151,14 +152,20 @@ class FolderCollectionTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//         if let folderIndex = segue.destination as?  {
-//                   folderIndex. = self
-//                 
-//                       }
-//                   }
-//                   
-//               }    }
-//    
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let folderIndex = segue.destination as? NotesTableViewController {
+            folderIndex.delegateFolderCol = self
+            
+            if let tableCell = sender as? UITableViewCell{
+                
+                if let index = tableView.indexPath(for: tableCell)?.row{
+                    folderIndex.curIndx = index
+                }
+                
+                     }
+                  }
+                 
+        }
+    
 
 }

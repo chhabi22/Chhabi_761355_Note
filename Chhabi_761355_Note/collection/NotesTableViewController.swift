@@ -10,9 +10,12 @@ import UIKit
 
 class NotesTableViewController: UITableViewController {
     
-        var curIndx = -1
+    @IBOutlet weak var screen: UIBarButtonItem!
+    var curIndx = -1
+    @IBOutlet weak var trash: UIBarButtonItem!
     var folderIndex: Int?
     @IBOutlet var notesTableView: UITableView!
+    var delegateFolderCol:  FolderCollectionTableViewController?
     
 
     override func viewDidLoad() {
@@ -30,7 +33,9 @@ class NotesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return folderData.foldersData.count    }
+        return folderData.foldersData[curIndx].notesName.count
+        
+    }
     
     // CELL FOR ROW AT
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,31 +44,13 @@ class NotesTableViewController: UITableViewController {
         
         cell.accessoryType = .detailButton
 
-        cell.textLabel?.text = "\(folderData.foldersData[indexPath.row].notesName)"
+        cell.textLabel?.text = "\(folderData.foldersData[curIndx].notesName[indexPath.row])"
         return cell
     }
     
 
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        tableView.reloadData()
-//    }
-//
-//
 
-//    @IBAction func trash(_ sender: UIBarButtonItem) {
-//         // SWIPE DELETE
-//        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//                  if editingStyle == .delete {
-//                      notesArray?.remove(at: indexPath.row)
-//                      notesTableView.deleteRows(at: [indexPath], with: .fade)
-//                  }
-//              }    }
-    
-    
-    
-    
-    
+
     
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,25 +100,24 @@ class NotesTableViewController: UITableViewController {
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//
-//         if let detailView = segue.destination as? AddNoteViewController {
-//                  detailView.notesTable = self
-//
-//            }
-//        }
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+         if let detailView = segue.destination as? AddNoteViewController {
+                  detailView.notesTable = self
+
+            }
+        }
     
         override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         if let cell = notesTableView.cellForRow(at: indexPath){
         if cell.accessoryType == .detailButton{
              
-                           func updateText(text: String) {
-                                   //var newValue = text
-                                   
-                            guard folderData.foldersData[indexPath.row].notesName != nil else {
-                                       return
-                                   }
+                  func updateText(text: String) {
+                           //var newValue = text
+                           
+                    guard folderData.foldersData[indexPath.row].notesName != nil else {
+                               return
+                           }
 //                            folderData.foldersData[indexPath.row].notesName.append(text)
 //                                   tableView.reloadData()
             }
@@ -140,7 +126,7 @@ class NotesTableViewController: UITableViewController {
             }
     }
             
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
           if let cell = tableView.cellForRow(at: indexPath){
           if cell.accessoryType == .detailButton{
@@ -154,7 +140,33 @@ class NotesTableViewController: UITableViewController {
           
       }
     
-     func updateText(text: String) {
+    @IBAction func elipseAction(_ sender: UIBarButtonItem) {
+        
+        trash.isEnabled = !trash.isEnabled
+        screen.isEnabled = !screen.isEnabled
+        
+    }
+    
+    
+    @IBAction func trashDelete(_ sender: Any) {
+        // alert
+        let deleteNoteAlert = UIAlertController(title: "Delete ", message: "Are you sure?", preferredStyle: .alert)
+        // cancel
+        let cancelNote = UIAlertAction(title: "Cancel", style: .default)
+        cancelNote.setValue(UIColor.brown, forKey: "titleTextColor")        // delete
+        let deleteNote = UIAlertAction(title: "Delete", style: .default,handler:{[weak deleteNoteAlert]
+            (_) in })
+        deleteNote.setValue(UIColor.red, forKey: "titleTextColor")
+        deleteNoteAlert.addAction(cancelNote)
+       deleteNoteAlert.addAction(deleteNote)
+        
+        self.present(deleteNoteAlert, animated: true, completion: nil)    }
+    
+    
+    
+    
+    
+     //func updateText(text: String) {
         //folderData.foldersData[indexPath.row].notesName.append(text)
        // tableView.reloadData()
                
@@ -174,11 +186,14 @@ class NotesTableViewController: UITableViewController {
 //                tableView.reloadRows(at: [indexPath], with: .fade)
 //            }
         
-    }
+   
     
 
 
-      
+    override func viewWillDisappear(_ animated: Bool) {
+        delegateFolderCol?.tableView.reloadData()
+    }
+
 
 
 
